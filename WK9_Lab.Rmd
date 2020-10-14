@@ -142,7 +142,7 @@ ans0 <- confint(lm(y~x))
 ans1 <- my_boot(dat = data.frame(x, y), my_stat, R = R, ncpus = 2L)
 head(ans1)
 
-# You should get something like this #GETTING AN ERROR MESSAGE HERE
+# You should get something like this 
 t(apply(ans1, 2, quantile, c(.025,.975)))
 ##                   2.5%      97.5%
 ## (Intercept) -0.1372435 0.05074397
@@ -155,10 +155,9 @@ ans0
 
 2. Check whether your version actually goes faster than the non-parallel version:
 
-
-```{r benchmark-problem3, eval = FALSE}
-system.time(my_boot(dat = data.frame(x, y), my_stat, R = 3000, ncpus = 1L))
-system.time(my_boot(dat = data.frame(x, y), my_stat, R = 3000, ncpus = 2L))
+```{r benchmark-problem3, eval = TRUE}
+system.time(my_boot(dat = data.frame(x, y), mi_stat, R = 4000, ncpus = 1L))
+system.time(my_boot(dat = data.frame(x, y), mi_stat, R = 4000, ncpus = 2L))
 ```
 
 ## Problem 4: Compile this markdown document using Rscript
@@ -166,9 +165,7 @@ system.time(my_boot(dat = data.frame(x, y), my_stat, R = 3000, ncpus = 2L))
 Once you have saved this Rmd file, try running the following command
 in your terminal:
 
-```bash
-Rscript --vanilla -e 'rmarkdown::render("[full-path-to-your-Rmd-file.Rmd]")' &
+```{r, eval = TRUE}
+rmarkdown::render("C:/Users/svann/OneDrive/Documents/USC/Classes/PM566/Labs/WK9_Lab.Rmd") 
 ```
 
-Where `[full-path-to-your-Rmd-file.Rmd]` should be replace with the full path to
-your Rmd file... :).
